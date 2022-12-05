@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smhrd.db.BoardMapper">
+	<select id="selectAllBoard" resultType="Board">
+		select num,name,writer,uploadday from board
+	</select>
+
+	<insert id="insertBoard" parameterType="Board">
+		insert into board values(board_seq.nextval, #{name}, #{writer}, #{filename}, #{content}, #{address}, sysdate)
+	</insert>
+	
+	<select id="selectOneBoard" resultType="Board" parameterType="int">
+		select * from board where num=#{num}
+	</select>
+
+</mapper>
